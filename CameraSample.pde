@@ -28,7 +28,7 @@ void draw() {
 }
 
 float[] getCirclePosition(float circleX, float circleY) {
-  float[] position = {circleX - camera.x + width / 2, circleY - camera.y + height / 2};
+  float[] position = {circleX - camera.x, circleY - camera.y};
   return position;
 }
 
@@ -50,22 +50,22 @@ class Camera {
   void move(int direction) {
     switch(direction) {
       case RIGHT:
-        if (x < FIELD_WIDTH) {
+        if (x < FIELD_WIDTH - width / 2) {
           x += moveSpeed;
         }
         break;
       case LEFT:
-        if (x > 0) {
+        if (x > width / 2 * -1) {
           x -= moveSpeed;
         }
         break;
       case DOWN:
-        if (y < FIELD_HEIGHT) {
+        if (y < FIELD_HEIGHT - height / 2) {
           y += moveSpeed;
         }
         break;
       case UP:
-        if (y > 0) {
+        if (y > height / 2 * -1) {
           y -= moveSpeed;
         }
         break;
